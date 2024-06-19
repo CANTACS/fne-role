@@ -5,3 +5,6 @@ use_netbird: false
 
 # Set this variable to use a custom folder name throughout the role
 dvm_folder: dvm
+
+# Set this variable to install the DVM Provisioning Manager to the FNE host
+dvmprov: true
