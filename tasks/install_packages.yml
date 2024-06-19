@@ -1,0 +1,23 @@
+---
+- name: Update and upgrade apt packages
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: dist
+
+- name: Install required packages for FNE
+  ansible.builtin.apt:
+    name:
+      - git
+      - unzip
+      - gcc-arm-none-eabi
+      - gcc
+      - g++
+      - cmake
+      - make
+      - build-essential
+      - libasio-dev
+      - libncurses-dev
+      - libssl-dev
+      - dnsutils
+      - python3-venv
+    state: present
