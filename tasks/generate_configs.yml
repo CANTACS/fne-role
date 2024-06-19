@@ -27,3 +27,15 @@
     dest: /opt/{{ dvm_folder }}/configs/rid_acl.dat
   vars:
     ridlist: "{{ rid_data.rid_list }}"
+
+- name: Load peer list configuration data
+  ansible.builtin.include_vars:
+    file: "{{ peerlist_config_file }}"
+    name: peerlist_data
+
+- name: Generate peer list configuration from template
+  ansible.builtin.template:
+    src: templates/configs/peer_list.dat.j2
+    dest: /opt/{{ dvm_folder }}/configs/peer_list.dat
+  vars:
+    peerlist: "{{ peerlist_data.peer_list }}"
