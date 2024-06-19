@@ -1,0 +1,26 @@
+# Talkgroup Configuration
+groupVoice:
+{% for talkgroup in talkgroups %}
+  - name: "{{ talkgroup.name }}"
+    config:
+      active: {{ talkgroup.config.active }}
+      affiliated: {{ talkgroup.config.affiliated }}
+      parrot: {{ talkgroup.config.parrot | default(false) }}
+      inclusion: {{ talkgroup.config.inclusion | default([]) | to_json }}
+      exclusion: {{ talkgroup.config.exclusion | default([]) | to_json }}
+      rewrite:
+        {% if talkgroup.config.rewrite %}
+        {% for rw in talkgroup.config.rewrite %}
+        - peerid: {{ rw.peerid }}
+          tgid: {{ rw.tgid }}
+          slot: {{ rw.slot | default(1) }}
+        {% endfor %}
+        {% else %}
+        []
+        {% endif %}
+      always: {{ talkgroup.config.always | default([]) | to_json }}
+      preferred: {{ talkgroup.config.preferred | default([]) | to_json }}
+    source:
+      tgid: {{ talkgroup.source.tgid }}
+      slot: {{ talkgroup.source.slot | default(1) }}
+{% endfor %}
