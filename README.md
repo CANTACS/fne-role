@@ -17,6 +17,10 @@ Debian or Ubuntu based system, `apt`, and an AMD64, ARM64 or ARM32 CPU.
 | dvm_folder | Set this variable to use a custom folder name throughout the role | dvm | No |
 | dvmprov | Set this variable to install the DVM Provisioning Manager to the FNE host | true | No |
 
+## Limitations
+
+It is **highly recommended** to set `install` to `true` if you make configuration changes, as it is possible the underlying binary has had changes.
+
 ## Example Playbook
 
 Please refer to the CANTACS dvm-deploy repo for a detailed playbook.
