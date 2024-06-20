@@ -7,19 +7,19 @@
     update: yes
 
 - name: Create a Python virtual environment
-  ansible.builtin.command: python3 -m venv /opt/{{ dvm_folder }}/dvmprov/
+  ansible.builtin.command: "python3 -m venv /opt/{{ dvm_folder }}/dvmprov/"
   args:
-    creates: /opt/{{ dvm_folder }}/dvmprov/bin/activate
+    creates: "/opt/{{ dvm_folder }}/dvmprov/bin/activate"
 
 - name: Install Python packages from requirements.txt
   ansible.builtin.pip:
-    requirements: /opt/{{ dvm_folder }}/dvmprov/requirements.txt
-    virtualenv: /opt/{{ dvm_folder }}/dvmprov/
+    requirements: "/opt/{{ dvm_folder }}/dvmprov/requirements.txt"
+    virtualenv: "/opt/{{ dvm_folder }}/dvmprov/"
 
 - name: Generate dvmprov configuration from template
   ansible.builtin.template:
     src: templates/configs/rest.py.j2
-    dest: /opt/{{ dvm_folder }}/dvmprov/rest.py
+    dest: "/opt/{{ dvm_folder }}/dvmprov/rest.py"
 
 - name: Copy systemd service file
   ansible.builtin.template:

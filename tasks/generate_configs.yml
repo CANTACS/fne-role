@@ -2,7 +2,7 @@
 - name: Generate FNE configuration from template
   ansible.builtin.template:
     src: templates/configs/configFNE.yml.j2
-    dest: /opt/{{ dvm_folder }}/configs/configFNE.yml
+    dest: "/opt/{{ dvm_folder }}/configs/configFNE.yml"
 
 - name: Load talkgroup configuration data
   ansible.builtin.include_vars:
@@ -12,7 +12,7 @@
 - name: Generate talkgroup configuration from template
   ansible.builtin.template:
     src: templates/configs/talkgroup_rules.yml.j2
-    dest: /opt/{{ dvm_folder }}/configs/talkgroup_rules.yml
+    dest: "/opt/{{ dvm_folder }}/configs/talkgroup_rules.yml"
   vars:
     talkgroups: "{{ talkgroup_data.groupVoice }}"
 
@@ -24,7 +24,7 @@
 - name: Generate RID configuration from template
   ansible.builtin.template:
     src: templates/configs/rid_acl.dat.j2
-    dest: /opt/{{ dvm_folder }}/configs/rid_acl.dat
+    dest: "/opt/{{ dvm_folder }}/configs/rid_acl.dat"
   vars:
     ridlist: "{{ rid_data.rid_list }}"
 
@@ -36,6 +36,6 @@
 - name: Generate peer list configuration from template
   ansible.builtin.template:
     src: templates/configs/peer_list.dat.j2
-    dest: /opt/{{ dvm_folder }}/configs/peer_list.dat
+    dest: "/opt/{{ dvm_folder }}/configs/peer_list.dat"
   vars:
     peerlist: "{{ peerlist_data.peer_list }}"
