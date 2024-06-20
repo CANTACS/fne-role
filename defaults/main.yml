@@ -1,5 +1,8 @@
 ---
 
+# Set this variable to install/reinstall the DVM Project FNE to the host
+install: true
+
 # Set this to true if Netbird is installed on the host
 use_netbird: false
 
