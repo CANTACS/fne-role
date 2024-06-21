@@ -6,14 +6,14 @@
 
 - name: Restart FNE service
   ansible.builtin.systemd:
-    name: "fne_service.service"
+    name: "fne.service"
     state: restarted
     enabled: true
     daemon_reload: true
 
 - name: Enable and start FNE service
   ansible.builtin.systemd:
-    name: "fne_service.service"
+    name: "fne.service"
     enabled: true
     state: started
     daemon_reload: true
