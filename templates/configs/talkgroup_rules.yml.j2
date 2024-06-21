@@ -8,12 +8,16 @@ groupVoice:
       parrot: {{ talkgroup.config.parrot | default(false) }}
       inclusion: {{ talkgroup.config.inclusion | default([]) | to_json }}
       exclusion: {{ talkgroup.config.exclusion | default([]) | to_json }}
+      {% if talkgroup.config.rewrite %}
       rewrite:
-        {% for rw in talkgroup.config.rewrite | default([]) %}
+        {% for rw in talkgroup.config.rewrite %}
         - peerid: {{ rw.peerid }}
           tgid: {{ rw.tgid }}
           slot: {{ rw.slot | default(1) }}
         {% endfor %}
+      {% else %}
+      rewrite: []
+      {% endif %}
       always: {{ talkgroup.config.always | default([]) | to_json }}
       preferred: {{ talkgroup.config.preferred | default([]) | to_json }}
     source:
