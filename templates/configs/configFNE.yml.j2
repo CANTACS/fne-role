@@ -5,11 +5,11 @@ log:
     fileLevel: {{ hostvars[inventory_hostname]['fileLevel'] | default(1) }}
     filePath: /var/log/{{ dvm_folder }}/
     activityFilePath: /var/log/{{ dvm_folder }}/
-    fileRoot: {{ hostvars[inventory_hostname]['fileRoot'] | default(DVM-FNE) }}
+    fileRoot: {{ hostvars[inventory_hostname]['fileRoot'] | default("DVM-FNE") }}
 
 master:
     peerId: {{ hostvars[inventory_hostname]['peerId'] }}
-    address: {{ hostvars[inventory_hostname]['address'] | default(0.0.0.0) }}
+    address: {{ hostvars[inventory_hostname]['address'] | default("0.0.0.0") }}
     port: {{ hostvars[inventory_hostname]['fne_port'] }}
     password: {{ hostvars[inventory_hostname]['fne_password'] }}
     verbose: {{ hostvars[inventory_hostname]['verbose'] | default(true) }}
@@ -50,9 +50,9 @@ peers:
     presharedKey: "{{ peer.presharedKey }}"
     rxFrequency: {{ peer.rxFrequency | default(0) }}
     txFrequency: {{ peer.txFrequency | default(0) }}
-    latitude: {{ peer.latitude | default(0.0) }}
-    longitude: {{ peer.longitude | default(0.0) }}
-    location: "{{ peer.location | default(nowhere)}}"
+    latitude: {{ peer.latitude | default("0.0") }}
+    longitude: {{ peer.longitude | default("0.0") }}
+    location: "{{ peer.location | default("nowhere")}}"
     debug: {{ peer.debug | default(false) }}
 {% endfor %}
 {% endif %}
@@ -69,8 +69,8 @@ system:
     restAddress: {{ hostvars[inventory_hostname]['restAddress'] }}
     restPort: {{ hostvars[inventory_hostname]['restPort'] }}
     restSsl: {{ hostvars[inventory_hostname]['restSsl'] | default(false) }}
-    restSslCertificate: {{ hostvars[inventory_hostname]['restSslCertificate'] | default(web.crt) }}
-    restSslKey: {{ hostvars[inventory_hostname]['restSslKey'] | default(web.key) }}
+    restSslCertificate: {{ hostvars[inventory_hostname]['restSslCertificate'] | default("web.crt") }}
+    restSslKey: {{ hostvars[inventory_hostname]['restSslKey'] | default("web.key") }}
     restPassword: {{ hostvars[inventory_hostname]['restPassword'] }}
     restDebug: {{ hostvars[inventory_hostname]['restDebug'] | default(false) }}
     radio_id:
@@ -79,6 +79,6 @@ system:
 
 peer_acl:
     enabled: {{ hostvars[inventory_hostname]['peer_acl_enabled'] | default(false) }}
-    mode: {{ hostvars[inventory_hostname]['peer_acl_mode'] | default(whitelist) }}
+    mode: {{ hostvars[inventory_hostname]['peer_acl_mode'] | default("whitelist") }}
     file: /opt/{{ dvm_folder }}/configs/peer_list.dat
     time: {{ hostvars[inventory_hostname]['peer_acl_time'] | default(2) }}
