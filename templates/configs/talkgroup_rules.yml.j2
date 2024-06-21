@@ -11,15 +11,11 @@ groupVoice:
       # line break
       {% if talkgroup.config.rewrite is defined %}
       rewrite:
-        {% if talkgroup.config.rewrite %}
         {% for rw in talkgroup.config.rewrite %}
         - peerid: {{ rw.peerid }}
           tgid: {{ rw.tgid }}
           slot: {{ rw.slot | default(1) }}
         {% endfor %}
-        {% else %}
-        []
-        {% endif %}
       {% else %}
       rewrite: []
       {% endif %}
