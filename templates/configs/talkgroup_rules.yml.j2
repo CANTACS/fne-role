@@ -9,14 +9,14 @@ groupVoice:
       inclusion: {{ talkgroup.config.inclusion | default([]) | to_json }}
       exclusion: {{ talkgroup.config.exclusion | default([]) | to_json }}
       # line break
-      {% if talkgroup.config.rewrite is defined %}
+      {% if talkgroup.config.rewrite is defined -%}
       rewrite:
-        {% for rw in talkgroup.config.rewrite %}
+        {% for rw in talkgroup.config.rewrite -%}
         - peerid: {{ rw.peerid }}
           tgid: {{ rw.tgid }}
           slot: {{ rw.slot | default(1) }}
         {% endfor %}
-      {% else %}
+      {% else -%}
       rewrite: []
       {% endif %}
       # line break
