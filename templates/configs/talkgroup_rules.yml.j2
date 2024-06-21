@@ -18,7 +18,6 @@ groupVoice:
       {% else -%}
       rewrite: []
       {% endif -%}
-      # line break
       always: {{ talkgroup.config.always | default([]) | to_json }}
       preferred: {{ talkgroup.config.preferred | default([]) | to_json }}
     source:
