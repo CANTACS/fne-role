@@ -8,6 +8,7 @@ groupVoice:
       parrot: {{ talkgroup.config.parrot | default(false) }}
       inclusion: {{ talkgroup.config.inclusion | default([]) | to_json }}
       exclusion: {{ talkgroup.config.exclusion | default([]) | to_json }}
+      # line break
       {% if talkgroup.config.rewrite is defined %}
       rewrite:
         {% if talkgroup.config.rewrite %}
@@ -22,6 +23,7 @@ groupVoice:
       {% else %}
       rewrite: []
       {% endif %}
+      # line break
       always: {{ talkgroup.config.always | default([]) | to_json }}
       preferred: {{ talkgroup.config.preferred | default([]) | to_json }}
     source:
