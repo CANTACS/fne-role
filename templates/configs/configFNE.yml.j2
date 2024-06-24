@@ -76,9 +76,8 @@ system:
     radio_id:
         file: /opt/{{ dvm_folder }}/configs/rid_acl.dat
         time: {{ hostvars[inventory_hostname]['rid_time'] | default(2) }}
-
-peer_acl:
-    enabled: {{ hostvars[inventory_hostname]['peer_acl_enabled'] | default(false) }}
-    mode: {{ hostvars[inventory_hostname]['peer_acl_mode'] | default("whitelist") }}
-    file: /opt/{{ dvm_folder }}/configs/peer_list.dat
-    time: {{ hostvars[inventory_hostname]['peer_acl_time'] | default(2) }}
+    peer_acl:
+        enabled: {{ hostvars[inventory_hostname]['peer_acl_enabled'] | default(false) }}
+        mode: {{ hostvars[inventory_hostname]['peer_acl_mode'] | default("whitelist") }}
+        file: /opt/{{ dvm_folder }}/configs/peer_list.dat
+        time: {{ hostvars[inventory_hostname]['peer_acl_time'] | default(2) }}
