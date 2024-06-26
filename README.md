@@ -16,6 +16,8 @@ Debian or Ubuntu based system, `apt`, and an AMD64, ARM64 or ARM32 CPU.
 | `use_netbird` | Set this to true if Netbird is installed on the host | `false` | No |
 | `dvm_folder` | Set this variable to use a custom folder name throughout the role | `dvm` | No |
 | `dvmprov` | Set this variable to install the DVM Provisioning Manager to the FNE host | `true` | No |
+| `rebuild` | Set this variable to force a rebuild using the GitHub action.  Rebuild will happen if the `dvmhost` project had changes since the last action run. | `false` | No |
+| `force_rebuild` | Set this variable to force the GitHub action to rebuild, regardless of whether the `dvmhost` project had changes since the last action run.  **`rebuild` *must* be set to `true` for this variable to be considered.** | `false` | No |
 
 ## Limitations
 
