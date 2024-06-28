@@ -39,3 +39,10 @@
     dest: "/opt/{{ dvm_folder }}/configs/peer_list.dat"
   vars:
     peerlist: "{{ peerlist_data.peer_list }}"
+
+- name: Generate DSD+ groups list from template
+  ansible.builtin.template:
+    src: templates/others/dsdplus.groups.j2
+    dest: "/opt/{{ dvm_folder }}/configs/dsdplus.groups"
+  vars:
+    talkgroups: "{{ talkgroup_data.groupVoice }}"
