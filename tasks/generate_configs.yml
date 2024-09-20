@@ -46,3 +46,27 @@
     dest: "/opt/{{ dvm_folder }}/configs/dsdplus.groups"
   vars:
     talkgroups: "{{ talkgroup_data.groupVoice }}"
+
+- name: Ensure local backup directory exists
+  become: false
+  local_action:
+    module: ansible.builtin.file
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - "./local_backups/"
+    - "./local_backups/fne/"
+
+- name: Fetch the generated templates for local backup
+  become: false
+  ansible.builtin.fetch:
+    src: "/opt/{{ dvm_folder }}/configs/{{ item }}"
+    dest: "./local_backups/fne/"
+    flat: yes
+  loop:
+    - configFNE.yml
+    - talkgroup_rules.yml
+    - rid_acl.dat
+    - peer_list.dat
+    - dsdplus.groups
