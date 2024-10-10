@@ -40,6 +40,16 @@
   vars:
     peerlist: "{{ peerlist_data.peer_list }}"
 
+- name: Generate IDEN table configuration from template
+  ansible.builtin.template:
+    src: templates/configs/sv_iden_table.yml.j2
+    dest: "/opt/{{ dvm_folder }}/configs/sv_iden_table.yml"
+
+- name: Generate system view configuration from template
+  ansible.builtin.template:
+    src: templates/configs/configSysview.yml.j2
+    dest: "/opt/{{ dvm_folder }}/configs/configSysview.yml"
+
 - name: Generate DSD+ groups list from template
   ansible.builtin.template:
     src: templates/others/dsdplus.groups.j2
@@ -70,3 +80,5 @@
     - rid_acl.dat
     - peer_list.dat
     - dsdplus.groups
+    - sv_iden_table.yml
+    - configSysview.yml

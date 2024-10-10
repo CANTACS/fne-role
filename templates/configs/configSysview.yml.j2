@@ -1,0 +1,37 @@
+#jinja2: trim_blocks: "true", lstrip_blocks: "false"
+
+log:
+    displayLevel: {{ hostvars[inventory_hostname]['sysview_displayLevel'] | default(1) }}
+    fileLevel: {{ hostvars[inventory_hostname]['sysview_fileLevel'] | default(1) }}
+    filePath: /var/log/{{ dvm_folder }}/
+    activityFilePath: /var/log/{{ dvm_folder }}/
+    fileRoot: {{ hostvars[inventory_hostname]['sysview_fileRoot'] | default("SYSVIEW") }}
+
+radio_id:
+    file: /opt/{{ dvm_folder }}/configs/rid_acl.dat
+    time: {{ hostvars[inventory_hostname]['rid_time'] | default(2) }}
+
+talkgroup_rules:
+    file: /opt/{{ dvm_folder }}/configs/talkgroup_rules.yml
+    time: {{ hostvars[inventory_hostname]['tg_time'] | default(2) }}
+
+iden_table:
+    file: /opt/{{ dvm_folder }}/configs/sv_iden_table.yml
+    time: {{ hostvars[inventory_hostname]['iden_time'] | default(2) }}
+
+fne:
+    masterAddress: 127.0.0.1
+    masterPort: {{ hostvars[inventory_hostname]['fne_port'] }}
+    password: {{ lookup('community.general.onepassword', 'FNE', field='password', vault='CANTACS') }}
+    identity: SYSVIEW
+    peerId: 90999
+    encrypted: true
+    presharedKey: {{ lookup('community.general.onepassword', 'FNE', field='AES_PSK', vault='CANTACS') }}
+    restAddress: 127.0.0.1
+    restPort: 9990
+    restSsl: false
+    restPassword: {{ lookup('community.general.onepassword', 'FNE', field='rest_password', vault='CANTACS') }}
+
+websocket:
+    port: 8443
+    debug: false
