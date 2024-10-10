@@ -71,10 +71,10 @@
     remote_src: true
     creates: "{{ tmp_dir.path }}/dvmhost"
 
-- name: Move only 'dvmfne' binary to the FNE folder
+- name: Move 'dvmfne', 'sysview', and 'tged' binaries to the FNE folder
   ansible.builtin.shell:
     cmd: >
-      find {{ tmp_dir.path }} -type f -name 'dvmfne' -exec mv {} /opt/{{ dvm_folder }}/ \;
+      find {{ tmp_dir.path }} -type f \( -name 'dvmfne' -o -name 'sysview' -o -name 'tged' \) -exec mv {} /opt/{{ dvm_folder }}/ \;
 
 - name: Remove the temporary directory
   ansible.builtin.file:
