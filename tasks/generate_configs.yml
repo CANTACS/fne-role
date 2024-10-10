@@ -42,8 +42,8 @@
 
 - name: Generate IDEN table configuration from template
   ansible.builtin.template:
-    src: templates/configs/sv_iden_table.yml.j2
-    dest: "/opt/{{ dvm_folder }}/configs/sv_iden_table.yml"
+    src: templates/configs/sv_iden_table.dat.j2
+    dest: "/opt/{{ dvm_folder }}/configs/sv_iden_table.dat"
 
 - name: Generate system view configuration from template
   ansible.builtin.template:
